@@ -1,0 +1,254 @@
+---------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\temp/append.log
+  log type:  text
+ opened on:  23 Jun 2017, 12:05:42
+
+. 
+. /********************** Section 2: Import raw data *************************/
+. 
+. local files : dir "`input_dir'\" files "*.csv"
+
+. cd "`input_dir'"
+C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\input
+
+. foreach file in `files'{
+  2.         insheet using "`file'", comma clear
+  3.         save "`file'.dta", replace
+  4.         }
+(15 vars, 356 obs)
+file tennis_1159684.csv.dta saved
+(15 vars, 376 obs)
+file tennis_1159756.csv.dta saved
+(15 vars, 392 obs)
+file tennis_1159759.csv.dta saved
+(15 vars, 372 obs)
+file tennis_1159762.csv.dta saved
+(15 vars, 354 obs)
+file tennis_1159765.csv.dta saved
+(15 vars, 398 obs)
+file tennis_1159768.csv.dta saved
+(15 vars, 370 obs)
+file tennis_1159774.csv.dta saved
+(15 vars, 379 obs)
+file tennis_1159777.csv.dta saved
+(15 vars, 372 obs)
+file tennis_1303952.csv.dta saved
+(15 vars, 395 obs)
+file tennis_1303955.csv.dta saved
+(15 vars, 401 obs)
+file tennis_1303958.csv.dta saved
+(15 vars, 355 obs)
+file tennis_1303961.csv.dta saved
+(15 vars, 369 obs)
+file tennis_1303964.csv.dta saved
+(15 vars, 358 obs)
+file tennis_1303967.csv.dta saved
+(15 vars, 395 obs)
+file tennis_1303970.csv.dta saved
+(15 vars, 380 obs)
+file tennis_1303973.csv.dta saved
+(15 vars, 729 obs)
+file tennis_1464749.csv.dta saved
+(15 vars, 658 obs)
+file tennis_1464757.csv.dta saved
+(15 vars, 723 obs)
+file tennis_1464760.csv.dta saved
+(15 vars, 721 obs)
+file tennis_1464763.csv.dta saved
+(15 vars, 647 obs)
+file tennis_1464766.csv.dta saved
+(15 vars, 698 obs)
+file tennis_1464769.csv.dta saved
+(15 vars, 729 obs)
+file tennis_1464772.csv.dta saved
+(15 vars, 736 obs)
+file tennis_1464775.csv.dta saved
+(15 vars, 743 obs)
+file tennis_1464778.csv.dta saved
+(15 vars, 683 obs)
+file tennis_1608215.csv.dta saved
+(15 vars, 722 obs)
+file tennis_1608218.csv.dta saved
+(15 vars, 735 obs)
+file tennis_1608221.csv.dta saved
+(15 vars, 664 obs)
+file tennis_1608224.csv.dta saved
+(15 vars, 684 obs)
+file tennis_1608227.csv.dta saved
+(15 vars, 709 obs)
+file tennis_1608230.csv.dta saved
+(15 vars, 742 obs)
+file tennis_1608233.csv.dta saved
+(15 vars, 740 obs)
+file tennis_1608236.csv.dta saved
+(15 vars, 566 obs)
+file tennis_188233.csv.dta saved
+(15 vars, 655 obs)
+file tennis_188234.csv.dta saved
+(15 vars, 677 obs)
+file tennis_188235.csv.dta saved
+(15 vars, 659 obs)
+file tennis_188236.csv.dta saved
+(15 vars, 622 obs)
+file tennis_188237.csv.dta saved
+(15 vars, 680 obs)
+file tennis_188238.csv.dta saved
+(15 vars, 709 obs)
+file tennis_188239.csv.dta saved
+(15 vars, 709 obs)
+file tennis_188240.csv.dta saved
+(15 vars, 623 obs)
+file tennis_286531.csv.dta saved
+(15 vars, 681 obs)
+file tennis_286532.csv.dta saved
+(15 vars, 721 obs)
+file tennis_286533.csv.dta saved
+(15 vars, 637 obs)
+file tennis_286535.csv.dta saved
+(15 vars, 714 obs)
+file tennis_286536.csv.dta saved
+(15 vars, 751 obs)
+file tennis_286537.csv.dta saved
+(15 vars, 717 obs)
+file tennis_286538.csv.dta saved
+(15 vars, 703 obs)
+file tennis_286791.csv.dta saved
+(15 vars, 655 obs)
+file tennis_410765.csv.dta saved
+(15 vars, 683 obs)
+file tennis_410766.csv.dta saved
+(15 vars, 706 obs)
+file tennis_410767.csv.dta saved
+(15 vars, 714 obs)
+file tennis_410768.csv.dta saved
+(15 vars, 684 obs)
+file tennis_410769.csv.dta saved
+(15 vars, 724 obs)
+file tennis_410770.csv.dta saved
+(15 vars, 751 obs)
+file tennis_410771.csv.dta saved
+(15 vars, 694 obs)
+file tennis_410772.csv.dta saved
+(15 vars, 945 obs)
+file tennis_561468.csv.dta saved
+(15 vars, 744 obs)
+file tennis_564071.csv.dta saved
+(15 vars, 890 obs)
+file tennis_564074.csv.dta saved
+(15 vars, 911 obs)
+file tennis_564077.csv.dta saved
+(15 vars, 771 obs)
+file tennis_564080.csv.dta saved
+(15 vars, 785 obs)
+file tennis_564083.csv.dta saved
+(15 vars, 872 obs)
+file tennis_564086.csv.dta saved
+(15 vars, 839 obs)
+file tennis_564089.csv.dta saved
+(15 vars, 653 obs)
+file tennis_693618.csv.dta saved
+(15 vars, 725 obs)
+file tennis_693621.csv.dta saved
+(15 vars, 744 obs)
+file tennis_693624.csv.dta saved
+(15 vars, 755 obs)
+file tennis_693627.csv.dta saved
+(15 vars, 705 obs)
+file tennis_693630.csv.dta saved
+(15 vars, 759 obs)
+file tennis_693633.csv.dta saved
+(15 vars, 824 obs)
+file tennis_693636.csv.dta saved
+(15 vars, 813 obs)
+file tennis_693639.csv.dta saved
+(15 vars, 652 obs)
+file tennis_839174.csv.dta saved
+(15 vars, 746 obs)
+file tennis_839177.csv.dta saved
+(15 vars, 789 obs)
+file tennis_839180.csv.dta saved
+(15 vars, 759 obs)
+file tennis_839183.csv.dta saved
+(15 vars, 694 obs)
+file tennis_839186.csv.dta saved
+(15 vars, 768 obs)
+file tennis_839189.csv.dta saved
+(15 vars, 815 obs)
+file tennis_839192.csv.dta saved
+(15 vars, 805 obs)
+file tennis_839195.csv.dta saved
+(15 vars, 426 obs)
+file tennis_93319.csv.dta saved
+(15 vars, 470 obs)
+file tennis_93320.csv.dta saved
+(15 vars, 495 obs)
+file tennis_93321.csv.dta saved
+(15 vars, 448 obs)
+file tennis_93322.csv.dta saved
+(15 vars, 424 obs)
+file tennis_93323.csv.dta saved
+(15 vars, 458 obs)
+file tennis_93324.csv.dta saved
+(15 vars, 497 obs)
+file tennis_93325.csv.dta saved
+(15 vars, 489 obs)
+file tennis_93326.csv.dta saved
+(15 vars, 658 obs)
+file tennis_997349.csv.dta saved
+(15 vars, 694 obs)
+file tennis_997352.csv.dta saved
+(15 vars, 780 obs)
+file tennis_997355.csv.dta saved
+(15 vars, 717 obs)
+file tennis_997358.csv.dta saved
+(15 vars, 686 obs)
+file tennis_997361.csv.dta saved
+(15 vars, 746 obs)
+file tennis_997364.csv.dta saved
+(15 vars, 777 obs)
+file tennis_997367.csv.dta saved
+(15 vars, 781 obs)
+file tennis_997370.csv.dta saved
+
+. 
+. /********************** Section 3: Append data ******************************/
+. 
+. clear all
+
+. local files : dir "`input_dir'\" files "*.dta"
+
+. foreach file in `files'{
+  2.         append using "`file'"
+  3.         }
+competition_group was str8 now str9
+home_city was str20 now str22
+list_title was str34 now str35
+name was str29 now str33
+home_state was str2 now str6
+home_state was str6 now str13
+name was str33 now str40
+home_state was str13 now str15
+home_state was str15 now str16
+home_city was str22 now str23
+list_publication_time was str88 now str89
+competition_month was str7 now str8
+home_city was str23 now str25
+home_city was str25 now str28
+
+.         
+. ********
+. * Save *
+. ********
+. 
+. save "master_list.dta", replace
+(note: file master_list.dta not found)
+file master_list.dta saved
+
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\temp/append.log
+  log type:  text
+ closed on:  23 Jun 2017, 12:05:44
+---------------------------------------------------------------------------------------------------------------------------------

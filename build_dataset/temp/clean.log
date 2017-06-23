@@ -1,0 +1,71 @@
+---------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\temp/clean.log
+  log type:  text
+ opened on:  23 Jun 2017, 12:08:20
+
+. 
+. /********************** Section 2: Remove unwanted variables *************************/
+. 
+. use "`input_dir'\master_list.dta", clear
+
+. keep competition_month competition_year home_city home_state points rank
+
+. 
+. /********************** Section 3: Generate home state factor variable ******************************/
+. 
+. replace home_state=upper(home_state)
+(57 real changes made)
+
+. replace home_state="Foreign" if length(home_state)!=2
+(85 real changes made)
+
+. replace home_state="Foreign" if home_state=="AB" | home_state=="BC" | home_state=="CZ" | home_state=="ON" | home_state=="PQ" | 
+> home_state=="QC" | home_state=="ZH"
+(142 real changes made)
+
+. replace home_state="Territory" if home_state=="AS" | home_state=="GU" | home_state=="MP" | home_state=="PR" | home_state=="UM" 
+> | home_state=="VI"
+(1502 real changes made)
+
+. egen home_state_factor=group(home_state),label
+
+. drop home_state
+
+.  
+. /********************** Section 4: Generate hill indicator variable ******************************/
+. 
+. gen hill_indicator=0
+
+. replace hill_indicator=1 if strpos(home_city, "Hill")>0
+(1042 real changes made)
+
+. 
+. /********************** Section 5: Generate home state mean points variable ******************************/
+. 
+. egen home_state_mean=mean(points), by(home_state_factor)
+
+. 
+. /********************** Section 6: Generate state count variable ******************************/
+. 
+. egen state_count=count(home_state_factor), by(home_state_factor)
+
+. 
+. ********
+. * Save *
+. ********
+. 
+. cd "`output_dir'"
+C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\output
+
+. save "clean.dta", replace
+(note: file clean.dta not found)
+file clean.dta saved
+
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\temp/clean.log
+  log type:  text
+ closed on:  23 Jun 2017, 12:08:21
+---------------------------------------------------------------------------------------------------------------------------------
