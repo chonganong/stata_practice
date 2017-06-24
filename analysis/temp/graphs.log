@@ -1,0 +1,91 @@
+---------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\Chong An\Documents\GitHub\stata_practice\analysis\temp\graphs.log
+  log type:  text
+ opened on:  23 Jun 2017, 19:53:06
+
+. 
+. /********************** Section 2: graphs *************************/
+. 
+. use "`input_dir'\clean.dta", clear
+
+. histogram home_state_factor, discrete 
+(start=1, width=1)
+
+. label list statelbl
+statelbl:
+           1 AK
+           2 AL
+           3 AR
+           4 AZ
+           5 CA
+           6 CO
+           7 CT
+           8 DC
+           9 DE
+          10 FL
+          11 Foreign
+          12 GA
+          13 HI
+          14 IA
+          15 ID
+          16 IL
+          17 IN
+          18 KS
+          19 KY
+          20 LA
+          21 MA
+          22 MD
+          23 ME
+          24 MI
+          25 MN
+          26 MO
+          27 MS
+          28 MT
+          29 NC
+          30 ND
+          31 NE
+          32 NH
+          33 NJ
+          34 NM
+          35 NV
+          36 NY
+          37 OH
+          38 OK
+          39 OR
+          40 PA
+          41 RI
+          42 SC
+          43 SD
+          44 TN
+          45 TX
+          46 Territory
+          47 UT
+          48 VA
+          49 VT
+          50 WA
+          51 WI
+          52 WV
+          53 WY
+
+. 
+. cd "`output_dir'"
+C:\Users\Chong An\Documents\GitHub\stata_practice\analysis\output
+
+. graph save Graph "C:\Users\Chong An\Documents\GitHub\stata_practice\analysis\output\histogram_state.gph"
+(file C:\Users\Chong An\Documents\GitHub\stata_practice\analysis\output\histogram_state.gph saved)
+
+. 
+end of do-file
+
+. 
+end of do-file
+
+. 
+. di "KLAAR"
+KLAAR
+
+. 
+end of do-file
+
+. exit, clear

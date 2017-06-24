@@ -1,12 +1,13 @@
 /*******************************************************************************
-*	File name:		clean.do
+*	File name:		01_append.do
 *  	Author(s):		Chong An Ong
 *  	Written:       	06/23/2017 (of latest version)
 *
-*	Inputs:			
-*	Outputs:		
+*	Inputs:			$repository\data
+*	Outputs:		master_list.dta
 *	
-*	Description: 
+*	Description:    i.	Convert the .csv files into .dta files.
+*					ii.	Append all of the .dta files into one.
 *
 * 
 *******************************************************************************/
@@ -19,9 +20,9 @@ clear mata
 set more off
 cap log close
 
-local input_dir  "C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\input"
-local temp_dir   "C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\temp"
-local output_dir "C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\output"
+local input_dir  "$repository\build_dataset\input"
+local temp_dir   "$repository\build_dataset\temp"
+local output_dir "$repository\build_dataset\output"
 
 log using "`temp_dir'/append", text replace
 

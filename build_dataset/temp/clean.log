@@ -2,23 +2,30 @@
       name:  <unnamed>
        log:  C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\temp/clean.log
   log type:  text
- opened on:  23 Jun 2017, 12:08:20
+ opened on:  23 Jun 2017, 19:52:59
 
 . 
 . /********************** Section 2: Remove unwanted variables *************************/
 . 
 . use "`input_dir'\master_list.dta", clear
 
-. keep competition_month competition_year home_city home_state points rank
+. keep competition_month competition_year home_city home_section home_state points rank
 
+. 
+. /********************** Section 3: Clean competition month ******************************/
+. 
+. //Not sure what to clean here since it already looks clean
 . 
 . /********************** Section 3: Generate home state factor variable ******************************/
 . 
+. replace home_state="GU" if home_city=="Guam"
+(1 real change made)
+
 . replace home_state=upper(home_state)
 (57 real changes made)
 
 . replace home_state="Foreign" if length(home_state)!=2
-(85 real changes made)
+(84 real changes made)
 
 . replace home_state="Foreign" if home_state=="AB" | home_state=="BC" | home_state=="CZ" | home_state=="ON" | home_state=="PQ" | 
 > home_state=="QC" | home_state=="ZH"
@@ -26,9 +33,9 @@
 
 . replace home_state="Territory" if home_state=="AS" | home_state=="GU" | home_state=="MP" | home_state=="PR" | home_state=="UM" 
 > | home_state=="VI"
-(1502 real changes made)
+(1503 real changes made)
 
-. egen home_state_factor=group(home_state),label
+. encode home_state, gen(home_state_factor) label(statelbl)
 
 . drop home_state
 
@@ -46,9 +53,11 @@
 . egen home_state_mean=mean(points), by(home_state_factor)
 
 . 
-. /********************** Section 6: Generate state count variable ******************************/
+. /********************** Section 6: Generate section count variable ******************************/
 . 
-. egen state_count=count(home_state_factor), by(home_state_factor)
+. encode home_section, gen(home_section_factor)
+
+. egen section_count=count(home_section_factor), by(home_section_factor competition_year)
 
 . 
 . ********
@@ -67,5 +76,5 @@ file clean.dta saved
       name:  <unnamed>
        log:  C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\temp/clean.log
   log type:  text
- closed on:  23 Jun 2017, 12:08:21
+ closed on:  23 Jun 2017, 19:53:00
 ---------------------------------------------------------------------------------------------------------------------------------

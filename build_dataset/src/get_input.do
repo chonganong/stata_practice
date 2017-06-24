@@ -7,8 +7,8 @@ set more off
 *************************
 
 //copy data
-local files : dir "C:\Users\Chong An\Documents\GitHub\stata_practice\data" files "*.csv"
-cd "C:\Users\Chong An\Documents\GitHub\stata_practice\data"
+local files : dir "$repository\data" files "*.csv"
+cd "$repository\data"
 foreach file in `files'{
-	copy "`file'" "C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\input\\`file'", replace
+	copy "`file'" "$repository\build_dataset\input\\`file'", replace
 	}
