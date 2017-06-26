@@ -27,12 +27,13 @@ local input_dir  "$repository\analysis\input"
 local temp_dir   "$repository\analysis\temp"
 local output_dir "$repository\analysis\output"
 
-log using "`temp_dir'/summary_stats", text replace
+log using "`temp_dir'/01_summary_stats", text replace
 
 /********************** Section 2: t-test on points by hill indicator *************************/
 
 use "`input_dir'\clean.dta", clear
-ttest points, by(hill_indicator)
+ttest points, by(hill_indicator) unequal
+// stata defaults to equal variances, best practice is to use unequal vairanace
 
 /********************** Section 3: Output table of number of kids from each state ******************************/
 
@@ -52,7 +53,6 @@ forvalues year=2004/2015 {
 		rename home_city _`year'
 		save "`temp_dir'\\`year'.dta", replace
 	restore
-
 }
 
 /********************** Section 5: Output section-count by year wide dataset *******************************/
@@ -61,19 +61,13 @@ keep competition_year home_section section_count
 duplicates drop
 replace home_section="Mid_Atlantic" if home_section=="Mid-Atlantic"
 reshape wide section_count, i(competition_year) j(home_section) s
-gen Total=0
-foreach var of varlist section* {
-	replace `var'=0 if `var'==.
-	replace Total=`var'+Total
-	}
+egen Total=rowtotal(section*)
 rename *count* .*
-
 
 ********
 * Save *
 ********
 
-cd "`output_dir'"
-save "section_count.dta", replace
+save "`output_dir'\section_count.dta", replace
 
 log close

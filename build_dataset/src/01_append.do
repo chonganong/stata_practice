@@ -24,7 +24,7 @@ local input_dir  "$repository\build_dataset\input"
 local temp_dir   "$repository\build_dataset\temp"
 local output_dir "$repository\build_dataset\output"
 
-log using "`temp_dir'/append", text replace
+log using "`temp_dir'/01_append", text replace
 
 /********************** Section 2: Import raw data *************************/
 
@@ -32,21 +32,23 @@ local files : dir "`input_dir'\" files "*.csv"
 cd "`input_dir'"
 foreach file in `files'{
 	insheet using "`file'", comma clear
-	save "`file'.dta", replace
-	}
+	save "`temp_dir'\\`file'.dta", replace
+}
 
 /********************** Section 3: Append data ******************************/
 
 clear all
-local files : dir "`input_dir'\" files "*.dta"
+cd "`temp_dir'"
+local files : dir "`temp_dir'\" files "*.dta"
+// change the gitignore file 
 foreach file in `files'{
 	append using "`file'"
-	}
+}
 	
 ********
 * Save *
 ********
 
-save "master_list.dta", replace
+save "`input_dir'\\master_list.dta", replace
 
 log close

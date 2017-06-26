@@ -23,7 +23,7 @@ local input_dir  "$repository\analysis\input"
 local temp_dir   "$repository\analysis\temp"
 local output_dir "$repository\analysis\output"
 
-log using "`temp_dir'\graphs", text replace
+log using "`temp_dir'\03_graphs", text replace
 
 /********************** Section 2: graphs *************************/
 
@@ -32,4 +32,5 @@ histogram home_state_factor, discrete
 label list statelbl
 
 cd "`output_dir'"
-graph save Graph "C:\Users\Chong An\Documents\GitHub\stata_practice\analysis\output\histogram_state.gph"
+graph export "`output_dir'\histogram_state.png", replace
+// use the graph export commanda

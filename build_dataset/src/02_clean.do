@@ -29,7 +29,7 @@ local input_dir  "$repository\build_dataset\input"
 local temp_dir   "$repository\build_dataset\temp"
 local output_dir "$repository\build_dataset\output"
 
-log using "`temp_dir'/clean", text replace
+log using "`temp_dir'/02_clean", text replace
 
 /********************** Section 2: Remove unwanted variables *************************/
 
@@ -45,6 +45,7 @@ keep competition_month competition_year home_city home_section home_state points
 replace home_state="GU" if home_city=="Guam"
 replace home_state=upper(home_state)
 replace home_state="Foreign" if length(home_state)!=2
+// tab and scroll through to catch irregularities
 replace home_state="Foreign" if home_state=="AB" | home_state=="BC" | home_state=="CZ" | home_state=="ON" | home_state=="PQ" | home_state=="QC" | home_state=="ZH"
 replace home_state="Territory" if home_state=="AS" | home_state=="GU" | home_state=="MP" | home_state=="PR" | home_state=="UM" | home_state=="VI"
 encode home_state, gen(home_state_factor) label(statelbl)
@@ -53,7 +54,8 @@ drop home_state
 /********************** Section 4: Generate hill indicator variable ******************************/
 
 gen hill_indicator=0
-replace hill_indicator=1 if strpos(home_city, "Hill")>0
+replace hill_indicator=1 if regexm(home_city, "Hill")==1 | (regexm(home_city, "hill")==1 & home_city!="Chillicothe")
+// regexm can capture Hill, hill, etc. more direct
 
 /********************** Section 5: Generate home state mean points variable ******************************/
 
@@ -63,12 +65,15 @@ egen home_state_mean=mean(points), by(home_state_factor)
 
 encode home_section, gen(home_section_factor)
 egen section_count=count(home_section_factor), by(home_section_factor competition_year)
+drop home_section_factor
+// best practice to have just one version per variable so all changes get tracked
 
 ********
 * Save *
 ********
 
 cd "`output_dir'"
-save "clean.dta", replace
+save "`output_dir'\clean.dta", replace
+// combine the cd and saving into one line by specifying file path
 
 log close
