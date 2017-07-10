@@ -73,5 +73,3 @@ drop home_section_factor
 cd "`output_dir'"
 save "`output_dir'/clean.dta", replace
 // combine the cd and saving into one line by specifying file path
-
-log close

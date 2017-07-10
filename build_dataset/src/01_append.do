@@ -47,5 +47,3 @@ foreach file in `files'{
 ********
 cd "`input_dir'"
 save "master_list.dta", replace
-
-log close
