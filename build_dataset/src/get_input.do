@@ -9,6 +9,4 @@ set more off
 //copy data
 local files : dir "$repository/data" files "*.csv"
 cd "$repository/data"
-foreach file in `files'{
-	copy "`file'" "$repository/build_dataset/input/`file'", replace
-}
+shell cp * ../build_dataset/input
