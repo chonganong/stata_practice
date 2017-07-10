@@ -6,7 +6,7 @@ set more off
 *Change the paths to match path on your computer locally*
 *********************************************************
 //Path of repository
-global repository "/mnt/fs0/home/chongan/stata_practice"
+global repository "/share/levittshare/stata_practice_v2/stata_practice"
 
 ***********************************************
 //Run all code in all folders in correct order*
