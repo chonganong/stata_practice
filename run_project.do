@@ -1,6 +1,7 @@
 clear all
 clear mata
 set more off
+cap log close 
 
 **********************IMPORTANT**************************
 *Change the paths to match path on your computer locally*

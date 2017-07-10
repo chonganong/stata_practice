@@ -23,15 +23,18 @@ clear mata
 set more off
 cap log close
 
-local input_dir  "$repository\analysis\input"
-local temp_dir   "$repository\analysis\temp"
-local output_dir "$repository\analysis\output"
+local input_dir  "$repository/analysis/input"
+local temp_dir   "$repository/analysis/temp"
+local output_dir "$repository/analysis/output"
 
-log using "`temp_dir'/01_summary_stats", text replace
+cd "`temp_dir'"
+shell chmod 777 .
+log using "01_summary_stats", text replace
 
 /********************** Section 2: t-test on points by hill indicator *************************/
 
-use "`input_dir'\clean.dta", clear
+cd "`input_dir"
+use "clean.dta", clear
 ttest points, by(hill_indicator) unequal
 // stata defaults to equal variances, best practice is to use unequal vairanace
 
@@ -51,7 +54,7 @@ forvalues year=2004/2015 {
 		drop if city_rank > 10
 		keep home_city city_rank
 		rename home_city _`year'
-		save "`temp_dir'\\`year'.dta", replace
+		save "`temp_dir'//`year'.dta", replace
 	restore
 }
 
@@ -67,7 +70,7 @@ rename *count* .*
 ********
 * Save *
 ********
-
-save "`output_dir'\section_count.dta", replace
+cd "`output_dir'"
+save "section_count.dta", replace
 
 log close
