@@ -23,7 +23,6 @@ version 12.1
 clear all
 clear mata
 set more off
-cap log close
 
 local input_dir  "$repository/build_dataset/input"
 local temp_dir   "$repository/build_dataset/temp"
