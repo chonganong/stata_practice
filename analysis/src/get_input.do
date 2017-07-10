@@ -7,5 +7,5 @@ set more off
 *************************
 
 //copy data
-cd "C:\Users\Chong An\Documents\GitHub\stata_practice\build_dataset\output"
-copy clean.dta "C:\Users\Chong An\Documents\GitHub\stata_practice\analysis\input\clean.dta", replace
+cd "$repository/build_dataset/output"
+shell cp * "$repository/analysis/input"

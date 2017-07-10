@@ -5,7 +5,7 @@ cap log close
 //Remove folder if exists:
 foreach folder in output input temp {
 	cd "$repository/analysis"
-	shell rm -f "`folder'"
+	shell rm -rf "`folder'"
 	mkdir `folder'
 }
 
