@@ -40,7 +40,6 @@ foreach file in `files'{
 clear all
 cd "`temp_dir'"
 local files : dir "`temp_dir'\" files "*.dta"
-// change the gitignore file 
 foreach file in `files'{
 	append using "`file'"
 }
@@ -48,7 +47,7 @@ foreach file in `files'{
 ********
 * Save *
 ********
-
-save "`input_dir'\\master_list.dta", replace
+cd "`input_dir'"
+save "master_list.dta", replace
 
 log close
