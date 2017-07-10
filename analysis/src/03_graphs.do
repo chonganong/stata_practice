@@ -19,9 +19,9 @@ clear mata
 set more off
 cap log close
 
-local input_dir  "$repository\analysis\input"
-local temp_dir   "$repository\analysis\temp"
-local output_dir "$repository\analysis\output"
+local input_dir  "$repository/analysis/input"
+local temp_dir   "$repository/analysis/temp"
+local output_dir "$repository/analysis/output"
 
 cd "`temp_dir'"
 shell chmod 777 .

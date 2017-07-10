@@ -23,9 +23,9 @@ clear mata
 set more off
 cap log close
 
-local input_dir  "$repository\analysis\input"
-local temp_dir   "$repository\analysis\temp"
-local output_dir "$repository\analysis\output"
+local input_dir  "$repository/analysis/input"
+local temp_dir   "$repository/analysis/temp"
+local output_dir "$repository/analysis/output"
 
 cd "`temp_dir'"
 shell chmod 777 .
@@ -38,5 +38,5 @@ use "clean.dta", clear
 eststo: reg rank points
 eststo: reg rank points i.home_state_factor
 eststo: reg rank points i.home_state_factor i.competition_year
-esttab using "`output_dir'\regressions.csv", r
+esttab using "`output_dir'/regressions.csv", r
 label list statelbl
