@@ -27,11 +27,14 @@ local input_dir  "$repository\analysis\input"
 local temp_dir   "$repository\analysis\temp"
 local output_dir "$repository\analysis\output"
 
-log using "`temp_dir'/02_regressions", text replace
+cd "`temp_dir'"
+shell chmod 777 .
+log using "02_regressions", text replace
 
 /********************** Section 2: regressions *************************/
 
-use "`input_dir'\clean.dta", clear
+cd "`input_dir'"
+use "clean.dta", clear
 eststo: reg rank points
 eststo: reg rank points i.home_state_factor
 eststo: reg rank points i.home_state_factor i.competition_year

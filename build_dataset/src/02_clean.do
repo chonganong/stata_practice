@@ -23,14 +23,20 @@ version 12.1
 clear all
 clear mata
 set more off
+cap log close
 
 local input_dir  "$repository/build_dataset/input"
 local temp_dir   "$repository/build_dataset/temp"
 local output_dir "$repository/build_dataset/output"
 
+cd "`temp_dir'"
+shell chmod 777 .
+log using "02_clean", text replace
+
 /********************** Section 2: Remove unwanted variables *************************/
 
-use "`input_dir'/master_list.dta", clear
+cd "`input_dir'"
+use "master_list.dta", clear
 keep competition_month competition_year home_city home_section home_state points rank
 
 /********************** Section 3: Clean competition month ******************************/

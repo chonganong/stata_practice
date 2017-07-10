@@ -33,7 +33,7 @@ log using "01_summary_stats", text replace
 
 /********************** Section 2: t-test on points by hill indicator *************************/
 
-cd "`input_dir"
+cd "`input_dir'"
 use "clean.dta", clear
 ttest points, by(hill_indicator) unequal
 // stata defaults to equal variances, best practice is to use unequal vairanace

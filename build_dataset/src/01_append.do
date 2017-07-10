@@ -23,6 +23,10 @@ local input_dir  "$repository/build_dataset/input"
 local temp_dir   "$repository/build_dataset/temp"
 local output_dir "$repository/build_dataset/output"
 
+cd "`temp_dir'"
+shell chmod 777 .
+log using "01_append", text replace
+
 /********************** Section 2: Import raw data *************************/
 
 local files : dir "`input_dir'/" files "*.csv"

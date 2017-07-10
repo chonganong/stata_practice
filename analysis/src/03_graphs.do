@@ -23,11 +23,14 @@ local input_dir  "$repository\analysis\input"
 local temp_dir   "$repository\analysis\temp"
 local output_dir "$repository\analysis\output"
 
-log using "`temp_dir'\03_graphs", text replace
+cd "`temp_dir'"
+shell chmod 777 .
+log using "03_graphs", text replace
 
 /********************** Section 2: graphs *************************/
 
-use "`input_dir'\clean.dta", clear
+cd "`input_dir'"
+use "clean.dta", clear
 histogram home_state_factor, discrete 
 label list statelbl
 
