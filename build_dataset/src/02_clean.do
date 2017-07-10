@@ -25,15 +25,15 @@ clear mata
 set more off
 cap log close
 
-local input_dir  "$repository\build_dataset\input"
-local temp_dir   "$repository\build_dataset\temp"
-local output_dir "$repository\build_dataset\output"
+local input_dir  "$repository/build_dataset/input"
+local temp_dir   "$repository/build_dataset/temp"
+local output_dir "$repository/build_dataset/output"
 
 log using "`temp_dir'/02_clean", text replace
 
 /********************** Section 2: Remove unwanted variables *************************/
 
-use "`input_dir'\master_list.dta", clear
+use "`input_dir'/master_list.dta", clear
 keep competition_month competition_year home_city home_section home_state points rank
 
 /********************** Section 3: Clean competition month ******************************/
@@ -73,7 +73,7 @@ drop home_section_factor
 ********
 
 cd "`output_dir'"
-save "`output_dir'\clean.dta", replace
+save "`output_dir'/clean.dta", replace
 // combine the cd and saving into one line by specifying file path
 
 log close

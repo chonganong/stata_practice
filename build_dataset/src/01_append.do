@@ -20,26 +20,26 @@ clear mata
 set more off
 cap log close
 
-local input_dir  "$repository\build_dataset\input"
-local temp_dir   "$repository\build_dataset\temp"
-local output_dir "$repository\build_dataset\output"
+local input_dir  "$repository/build_dataset/input"
+local temp_dir   "$repository/build_dataset/temp"
+local output_dir "$repository/build_dataset/output"
 
 log using "`temp_dir'/01_append", text replace
 
 /********************** Section 2: Import raw data *************************/
 
-local files : dir "`input_dir'\" files "*.csv"
+local files : dir "`input_dir'/" files "*.csv"
 cd "`input_dir'"
 foreach file in `files'{
 	insheet using "`file'", comma clear
-	save "`temp_dir'\\`file'.dta", replace
+	save "`temp_dir'//`file'.dta", replace
 }
 
 /********************** Section 3: Append data ******************************/
 
 clear all
 cd "`temp_dir'"
-local files : dir "`temp_dir'\" files "*.dta"
+local files : dir "`temp_dir'/" files "*.dta"
 foreach file in `files'{
 	append using "`file'"
 }
