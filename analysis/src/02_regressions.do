@@ -33,6 +33,7 @@ log using "02_regressions", text replace
 
 /********************** Section 2: regressions *************************/
 
+ssc install estout
 cd "`input_dir'"
 use "clean.dta", clear
 eststo: reg rank points
