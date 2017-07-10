@@ -5,10 +5,8 @@ cap log close
 
 //Remove folder if exists:
 foreach folder in output input temp {
-	cd "$repository/build_dataset/`folder'"
-	shell rm -r *
-	cd ..
-	cap !rmdir `folder'
+	cd "$repository/build_dataset"
+	shell rm -rf "`folder'"
 	mkdir `folder'
 }
 

@@ -4,10 +4,8 @@ set more off
 cap log close
 //Remove folder if exists:
 foreach folder in output input temp {
-	cd "$repository/analysis/`folder'"
-	shell rm -r *
-	cd ..
-	cap !rmdir `folder'
+	cd "$repository/analysis"
+	shell rm -f "`folder'"
 	mkdir `folder'
 }
 
