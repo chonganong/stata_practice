@@ -29,7 +29,7 @@ local input_dir  "$repository/build_dataset/input"
 local temp_dir   "$repository/build_dataset/temp"
 local output_dir "$repository/build_dataset/output"
 
-sleep 2000
+sleep 10000
 log using "`temp_dir'/02_clean", text replace
 
 /********************** Section 2: Remove unwanted variables *************************/

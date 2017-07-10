@@ -24,7 +24,7 @@ local input_dir  "$repository/build_dataset/input"
 local temp_dir   "$repository/build_dataset/temp"
 local output_dir "$repository/build_dataset/output"
 
-sleep 2000
+sleep 10000
 log using "`temp_dir'/01_append", text replace
 
 /********************** Section 2: Import raw data *************************/
