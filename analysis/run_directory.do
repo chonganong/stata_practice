@@ -10,7 +10,7 @@ foreach folder in output input temp {
 }
 
 //run all files in folder
-foreach file in get_input 01_summary_stats 02_regressions 03_graphs {
+foreach file in get_input 01_summary_stats 02_regressions {
 	cd "$repository//analysis/src/"
 	do "`file'".do
 }

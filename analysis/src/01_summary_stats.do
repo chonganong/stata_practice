@@ -28,7 +28,6 @@ local temp_dir   "$repository/analysis/temp"
 local output_dir "$repository/analysis/output"
 
 cd "`temp_dir'"
-shell chmod 777 .
 log using "01_summary_stats", text replace
 
 /********************** Section 2: t-test on points by hill indicator *************************/
